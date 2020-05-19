@@ -17,7 +17,7 @@ class Customer {
         return name;
     }
 
-    public String statement() {
+    public String statement() throws Exception {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         Enumeration enum_rentals = rentals.elements();
@@ -44,7 +44,7 @@ class Customer {
         return result;
     }
 
-    private double amountFor(Rental each) {
+    private double amountFor(Rental each) throws Exception {
         double thisAmount = 0;
         switch (each.getMovie().getPriceCode()) {
             case Movie.REGULAR:
@@ -60,6 +60,8 @@ class Customer {
                 if (each.getDaysRented() > 3)
                     thisAmount += (each.getDaysRented() - 3) * 1.5;
                 break;
+            default:
+                throw new Exception("unexpected PriceCode");
         }
         return thisAmount;
     }
