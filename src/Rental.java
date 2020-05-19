@@ -16,7 +16,7 @@ class Rental {
     }
 
 
-    private double getCharge() throws Exception {
+    public double getCharge() throws Exception {
         double result = 0;
         switch (getMovie().getPriceCode()) {
             case Movie.REGULAR:
@@ -36,5 +36,14 @@ class Rental {
                 throw new Exception("unexpected PriceCode");
         }
         return result;
+    }
+
+    private int getFrequentRenterPoints() {
+        // set frequent renter point
+        int frequentRenterPoints = 1;
+        // add bonus for a two day new release rental
+        if ((getMovie().getPriceCode() == Movie.NEW_RELEASE) && getDaysRented() > 1)
+            frequentRenterPoints++;
+        return frequentRenterPoints;
     }
 }

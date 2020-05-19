@@ -14,7 +14,8 @@ class CustomerTest {
 
     @org.junit.jupiter.api.Test
     void statement() {
-        c1.addRental(r1);   c1.addRental(r2);
+        c1.addRental(r1);
+        c1.addRental(r2);
         assertEquals("Rental Record for joe\n" +
                 "\tTitle		Days	Amount\n" +
                 "\tmovie1		10	30.0\n" +
